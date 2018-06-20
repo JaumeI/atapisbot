@@ -42,8 +42,6 @@ def main():
        
         last_update = annoying_bot.get_last_update()
         chat_type = last_update['message']['chat']['type']
-        #if(chat_type=='private')
-
 
         last_update_id = last_update['update_id']
         last_chat_text = last_update['message']['text']
