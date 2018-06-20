@@ -4,7 +4,7 @@ import datetime
 class BotHandler:
 
     def __init__(self, token):
-        self.token = "581632988:AAEXhdWcAoAQU1y8oOqEjaNDBElm-AEzAMY"
+        self.token = token
         self.api_url = "https://api.telegram.org/bot{}/".format(token)
 
     def get_updates(self, offset=None, timeout=30):
@@ -39,6 +39,7 @@ def main():
     new_offset = None
 
     while True:
+        annoying_bot.get_updates(new_offset)
        
         last_update = annoying_bot.get_last_update()
         chat_type = last_update['message']['chat']['type']
@@ -53,6 +54,7 @@ def main():
             insult_text += "conversation"
         elif chat_type == "group":
             insult_text+="group"
+        
         annoying_bot.send_message(last_chat_id,insult_text)
 
         new_offset = last_update_id + 1
